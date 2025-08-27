@@ -1,7 +1,3 @@
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
 static final class Person {
   private final String name;
   private final int age;

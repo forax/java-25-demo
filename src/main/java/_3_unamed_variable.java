@@ -1,9 +1,3 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.stream.IntStream;
-//import module java.base;
-
 void main() {
   var list = IntStream.range(0, 3).boxed().toList();
   for(var _ : list) {
@@ -12,7 +6,8 @@ void main() {
 
   boolean exist;
   try(var _ = Files.newInputStream(Path.of("README.md"))) {
-    exist = true;
+    var op = (UnaryOperator<Boolean>) _ -> true;
+    exist = op.apply(true);
   } catch (IOException _) {
     exist = false;
   }

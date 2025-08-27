@@ -1,6 +1,3 @@
-import java.lang.foreign.Arena;
-import java.lang.foreign.ValueLayout;
-
 void main() {
   var arena = Arena.global();
   var segment = arena.allocate(16);

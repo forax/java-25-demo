@@ -14,13 +14,13 @@ Demo of Java 25
 - Scoped Values
 - Structured Concurrency
 - Foreign Functions / Foreign memory
-  [Off-heap memory](src/main/java/_6_off_heap_memory.java),
-  [Arenas](src/main/java/_7_arenas.java),
-  [Struct](src/main/java/_8_struct.java),
-  [Array of Struct](src/main/java/_9_array_of_struct.java),
-  [Mapped File](src/main/java/_10_mapped_file.java),
-  [Stream](src/main/java/_11_mapped_file_stream.java),
-  [Parallel Stream](src/main/java/_12_mapped_file_stream_parallel.java)
+  [Off-heap memory](src/main/java/offheap._6_off_heap_memory.java),
+  [Arenas](src/main/java/offheap._7_arenas.java),
+  [Struct](src/main/java/offheap._8_struct.java),
+  [Array of Struct](src/main/java/offheap._9_array_of_struct.java),
+  [Mapped File](src/main/java/offheap._10_mapped_file.java),
+  [Stream](src/main/java/offheap._11_mapped_file_stream.java),
+  [Parallel Stream](src/main/java/offheap._12_mapped_file_stream_parallel.java)
 - [Stream Gatherer](https://github.com/forax/we_are_all_to_gather)
 
 ## Presentation slides

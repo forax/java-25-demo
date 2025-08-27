@@ -1,7 +1,3 @@
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
 record Person(String name, int age) {
   Person {
     Objects.requireNonNull(name);

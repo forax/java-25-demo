@@ -1,31 +1,19 @@
-import java.io.IOException;
-import java.lang.foreign.Arena;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.ValueLayout;
-import java.lang.invoke.VarHandle;
-import java.nio.channels.FileChannel;
-import java.nio.file.OpenOption;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-
-import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
-import static java.lang.foreign.MemoryLayout.structLayout;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 import static java.nio.channels.FileChannel.MapMode.READ_WRITE;
 import static java.nio.file.StandardOpenOption.CREATE;
 import static java.nio.file.StandardOpenOption.READ;
 import static java.nio.file.StandardOpenOption.WRITE;
 
-static final MemoryLayout POINT = structLayout(
+static final MemoryLayout POINT = MemoryLayout.structLayout(
     JAVA_INT.withName("x"),
     JAVA_INT.withName("y")
 );
 
-static final VarHandle X = POINT.varHandle(groupElement("x"));
-static final VarHandle Y = POINT.varHandle(groupElement("y"));
+static final VarHandle X = POINT.varHandle(MemoryLayout.PathElement.groupElement("x"));
+static final VarHandle Y = POINT.varHandle(MemoryLayout.PathElement.groupElement("y"));
 
-static final VarHandle ARRAY_X = POINT.arrayElementVarHandle(groupElement("x"));
-static final VarHandle ARRAY_Y = POINT.arrayElementVarHandle(groupElement("y"));
+static final VarHandle ARRAY_X = POINT.arrayElementVarHandle(MemoryLayout.PathElement.groupElement("x"));
+static final VarHandle ARRAY_Y = POINT.arrayElementVarHandle(MemoryLayout.PathElement.groupElement("y"));
 
 void main() throws IOException {
   try(var channel = FileChannel.open(Path.of("demofile"), READ, WRITE, CREATE)) {
