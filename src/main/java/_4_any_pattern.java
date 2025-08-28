@@ -25,7 +25,7 @@ void main() {
       new Person("Bob", 24),
       new Person("Janice", 36)));
 
-  System.out.println(set.contains(new Person("Jane", 12)));
+  IO.println(set.contains(new Person("Jane", 12)));
   //set.removeIf(_ -> true);
-  //System.out.println(set);
+  //IO.println(set);
 }

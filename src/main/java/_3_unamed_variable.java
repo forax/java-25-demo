@@ -1,7 +1,7 @@
 void main() {
   var list = IntStream.range(0, 3).boxed().toList();
   for(var _ : list) {
-    System.out.println("hello");
+    IO.println("hello");
   }
 
   boolean exist;
@@ -11,5 +11,5 @@ void main() {
   } catch (IOException _) {
     exist = false;
   }
-  System.out.println("README exists " + exist);
+  IO.println("README exists " + exist);
 }

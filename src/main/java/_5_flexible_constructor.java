@@ -8,7 +8,7 @@ static final class Person {
     if (age < 0) {
       throw new IllegalArgumentException("age < 0");
     }
-    //System.out.println(this);
+    //IO.println(this);
     super();
     this.name = name;
     this.age = age;
@@ -40,5 +40,5 @@ void main() {
       new Person("Bob", 24),
       new Person("Janice", 36)));
 
-  System.out.println(set);
+  IO.println(set);
 }
