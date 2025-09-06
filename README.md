@@ -2,13 +2,14 @@
 Demo of Java 25
 
 ### Language Features
-- implicit class and java.io.IO
-  [Implicit Classes](src/main/java/_1_implicit_class.java)
-- unnamed variable and any pattern
-  [Unnamed Variable](src/main/java/_3_unamed_variable.java),
-  [Any Pattern](src/main/java/_4_any_pattern.java)
-- flexible constructors
-  [Flexible constructor](src/main/java/_5_flexible_constructor.java)
+  - implicit class and java.io.IO
+    [Implicit Classes](src/main/java/lang/_1_compact_class.java)
+  - unnamed variable and any pattern
+    [Unnamed Variable](src/main/java/lang/_3_unamed_variable.java),
+    [Any Pattern](src/main/java/lang/_4_any_pattern.java)
+    [Any Pattern in equals](src/main/java/lang/_5_any_pattern_equals.java)
+  - flexible constructors
+    [Flexible constructor](src/main/java/lang/_6_flexible_constructor.java)
 
 ### APIs
 - Scoped Values

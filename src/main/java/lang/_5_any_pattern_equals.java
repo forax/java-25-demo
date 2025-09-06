@@ -8,8 +8,6 @@ record Person(String name, int age) {
 
   @Override
   public boolean equals(Object obj) {
-    //return obj instanceof Person(var name, var age) && this.name.equals(name);
-    //return obj instanceof Person(var name, var _) && this.name.equals(name);
     return obj instanceof Person(var name, _) && this.name.equals(name);
   }
 
