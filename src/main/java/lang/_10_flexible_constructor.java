@@ -35,10 +35,10 @@ static final class Person {
 }
 
 void main() {
-  var set = new HashSet<>(Set.of(
+  var set = Set.of(
       new Person("Jane", 42),
       new Person("Bob", 24),
-      new Person("Janice", 36)));
+      new Person("Janice", 36));
 
   IO.println(set);
 }
