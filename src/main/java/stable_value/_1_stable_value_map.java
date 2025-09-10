@@ -1,5 +1,5 @@
 static class BigObject {
-  String field1, field2, field3, field4;
+  final String field1, field2, field3, field4;
 
   BigObject(String key) {
     this.field1 = key;
@@ -7,6 +7,7 @@ static class BigObject {
     this.field3 = key;
     this.field4 = key;
     // ...
+    super();
   }
 }
 

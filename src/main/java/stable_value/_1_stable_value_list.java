@@ -1,5 +1,5 @@
 static class BigObject {
-  int field1, field2, field3, field4;
+  final int field1, field2, field3, field4;
 
   BigObject(int value) {
     this.field1 = value;
@@ -7,6 +7,7 @@ static class BigObject {
     this.field3 = value;
     this.field4 = value;
     // ...
+    super();
   }
 }
 

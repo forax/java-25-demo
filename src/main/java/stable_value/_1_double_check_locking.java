@@ -7,6 +7,7 @@ static class BigObject {
     this.field3 = 3;
     this.field4 = 4;
     // ...
+    super();
   }
 }
 
