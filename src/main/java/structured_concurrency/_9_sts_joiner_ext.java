@@ -83,7 +83,7 @@ void main() throws InterruptedException {
       return null;
     });
 
-    for(var latLong : latlongs){
+    for(var latLong : latlongs) {
       scope.fork(() -> OpenMeteo.getWeatherResponse(latLong));
     }
 
