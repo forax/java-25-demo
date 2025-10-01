@@ -41,6 +41,8 @@ public final class OpenMeteo {
     IO.println("Requesting weather data from " + uri);
 
     var body = Fetch.cache(uri, Fetch::fetch);
+    //var body = Fetch.fetch(uri);  // without a cache
+
     return OBJECT_MAPPER.readValue(body, WeatherResponse.class);
   }
 
