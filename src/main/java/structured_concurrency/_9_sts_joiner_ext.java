@@ -31,7 +31,7 @@ import static java.util.concurrent.StructuredTaskScope.Subtask.State.UNAVAILABLE
   };
 }
 
-<T> Joiner<T, List<Subtask<T>>> filtered(Joiner<T, ?> joiner, Predicate<? super Subtask<T>> filter) {
+<T> Joiner<T, Stream<Subtask<T>>> filtered(Joiner<T, ?> joiner, Predicate<? super Subtask<T>> filter) {
   return new Joiner<>() {
     private final ArrayList<Subtask<T>> subtasks = new ArrayList<>();
 
@@ -49,18 +49,18 @@ import static java.util.concurrent.StructuredTaskScope.Subtask.State.UNAVAILABLE
     }
 
     @Override
-    public List<Subtask<T>> result() throws Throwable {
+    public Stream<Subtask<T>> result() throws Throwable {
       joiner.result();  // can throw
-      return subtasks.stream().filter(filter).toList();
+      return subtasks.stream().filter(filter);
     }
   };
 }
 
-<T> Joiner<T, List<Subtask<T>>> completed(Joiner<T, ?> joiner) {
+<T> Joiner<T, Stream<Subtask<T>>> completed(Joiner<T, ?> joiner) {
   return filtered(joiner, subtask -> subtask.state() != UNAVAILABLE);
 }
 
-<T> Joiner<T, List<Subtask<T>>> succeed(Joiner<T, ?> joiner) {
+<T> Joiner<T, Stream<Subtask<T>>> succeed(Joiner<T, ?> joiner) {
   return filtered(joiner, subtask -> subtask.state() == SUCCESS);
 }
 
@@ -87,7 +87,7 @@ void main() throws InterruptedException {
       scope.fork(() -> OpenMeteo.getWeatherResponse(latLong));
     }
 
-    var subtasks = scope.join();
+    var subtasks = scope.join().toList();
     IO.println(subtasks);
   }
 }
