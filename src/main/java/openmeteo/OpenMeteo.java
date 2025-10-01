@@ -40,8 +40,12 @@ public final class OpenMeteo {
         """.formatted("" + latLong.latitude, "" + latLong.longitude));
     IO.println("Requesting weather data from " + uri);
 
-    var body = Fetch.cache(uri, Fetch::fetch);
-    //var body = Fetch.fetch(uri);  // without a cache
+    String body;
+    try {
+      body = Fetch.fetch(uri);                         // try a direct call
+    } catch (ConnectException _) {
+      body = Fetch.cache(uri, Fetch::fetch);   // uses the cache
+    }
 
     return OBJECT_MAPPER.readValue(body, WeatherResponse.class);
   }
