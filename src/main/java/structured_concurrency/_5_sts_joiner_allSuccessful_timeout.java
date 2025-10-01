@@ -13,17 +13,24 @@ void main() throws InterruptedException {
 
   var latlongs = List.of(paris, nantes, marseille);
   try(var scope = StructuredTaskScope.open(
-      StructuredTaskScope.Joiner.<WeatherResponse>awaitAllSuccessfulOrThrow())) {
+      StructuredTaskScope.Joiner.<WeatherResponse>allSuccessfulOrThrow(),
+            config -> config.withTimeout(Duration.ofMillis(2_000)))) {
     var callables = latlongs.stream()
         .map(this::task)
         .toList();
-    var subtasks = callables.stream()
-        .map(scope::fork)
-        .toList();
+    callables.forEach(scope::fork);
 
-    scope.join();
+    scope.fork(() -> {
+      try {
+        Thread.sleep(5_000);
+      } catch (InterruptedException e) {
+        throw new AssertionError(e);
+      }
+    });
 
-    for(var subtask : subtasks) {
+    var results = scope.join().toList();
+
+    for(var subtask : results) {
       var response = subtask.get();
       IO.println(response);
     }

@@ -40,15 +40,8 @@ public final class OpenMeteo {
         """.formatted("" + latLong.latitude, "" + latLong.longitude));
     IO.println("Requesting weather data from " + uri);
 
-    var request = HttpRequest.newBuilder().uri(uri).GET().build();
-
-    try (var httpClient = HttpClient.newBuilder().build()) {
-      var response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-      if (response.statusCode() != 200) {
-        throw new IOException("API request failed with status: " + response.statusCode());
-      }
-      return OBJECT_MAPPER.readValue(response.body(), WeatherResponse.class);
-    }
+    var body = Fetch.cache(uri, Fetch::fetch);
+    return OBJECT_MAPPER.readValue(body, WeatherResponse.class);
   }
 
   static void main() throws IOException, InterruptedException {

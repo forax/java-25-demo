@@ -13,8 +13,7 @@ void main() throws InterruptedException {
 
   var latlongs = List.of(paris, nantes, marseille);
   try(var scope = StructuredTaskScope.open(
-      StructuredTaskScope.Joiner.<WeatherResponse>allSuccessfulOrThrow(),
-            config -> config.withTimeout(Duration.ofMillis(2_000)))) {
+      StructuredTaskScope.Joiner.<WeatherResponse>allSuccessfulOrThrow())) {
     var callables = latlongs.stream()
         .map(this::task)
         .toList();
